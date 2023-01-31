@@ -2,9 +2,14 @@ package com.springdemo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 @Component
+@Scope("singleton")
 public class TennisCoach implements Coach {
 
     @Autowired
@@ -13,6 +18,16 @@ public class TennisCoach implements Coach {
 
     public TennisCoach() {
         System.out.println("Tennis Coach constructor");
+    }
+
+    @PostConstruct
+    public void doMyStartupStuff(){
+        System.out.println("Tennis coach initialised");
+    }
+
+    @PreDestroy
+    public void doMyCleanupStuffYoYo(){
+        System.out.println("Tennis coach destroyed");
     }
 
 //    @Autowired
