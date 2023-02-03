@@ -14,6 +14,7 @@
     <div class="container">
         <h2 class="text-center mt-3 mb-5">CRM - Customer Relationship Management</h2>
         <form:form action="saveCustomer" modelAttribute="customer" method="POST">
+            <form:hidden path="id"/>
             <div class="input-group mb-3">
               <span class="input-group-text">
                 <span class="material-icons-outlined">

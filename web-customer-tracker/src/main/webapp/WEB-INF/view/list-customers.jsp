@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Customer Relationship Management</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+              rel="stylesheet">
+    <style>
+        a {
+            text-decoration:none;
+            color:#555;
+        }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -22,12 +30,16 @@
       </thead>
       <tbody>
         <c:forEach var="tempCustomer" varStatus="i" items="${customers}">
-        <tr>
-          <th scope="row">${i.count}</th>
-          <td>${tempCustomer.firstName}</td>
-          <td>${tempCustomer.lastName}</td>
-          <td>${tempCustomer.email}</td>
-        </tr>
+            <c:url var="updateLink" value="/customer/showFormForUpdate">
+                <c:param name="customerId" value="${tempCustomer.id}" />
+            </c:url>
+            <tr>
+              <th scope="row">${i.count}</th>
+              <td>${tempCustomer.firstName}</td>
+              <td>${tempCustomer.lastName}</td>
+              <td>${tempCustomer.email}</td>
+              <td><a href="${updateLink}"><span class="material-icons-outlined">edit</span></a></td>
+            </tr>
         </c:forEach>
        </tbody>
     </table>
